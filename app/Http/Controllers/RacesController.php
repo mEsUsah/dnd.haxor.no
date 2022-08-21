@@ -16,10 +16,7 @@ class RacesController extends Controller
         ]);
     }
 
-    public function create(Request $request){
-        Log::debug('New!');
-        Log::debug($request);
-        
+    public function create(Request $request){        
         $validated = $request->validate([
             'name' => ['required','string', 'max:255'],
             'speed' => ['required','integer', 'min:0', 'max:100'],
@@ -31,8 +28,6 @@ class RacesController extends Controller
             'wis_bonus' => ['required','integer', 'min:0', 'max:100'],
             'cha_bonus' => ['required','integer', 'min:0', 'max:100']
         ]);
-        Log::debug("ok");
-        Log::debug($validated);
 
         $race = new Race;
 
@@ -46,8 +41,6 @@ class RacesController extends Controller
         $race->wis_bonus = $validated['wis_bonus'];
         $race->cha_bonus = $validated['cha_bonus'];
         $race->save();
-
-        Log::debug($race);
 
         return redirect('/races');
     }
