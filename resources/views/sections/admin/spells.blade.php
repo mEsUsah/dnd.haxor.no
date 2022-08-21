@@ -167,25 +167,26 @@
                 <div class="card-header">{{ __('Spells') }}</div>
                 <div class="card-body">
                     @foreach ($spells as $spell)
-                    <h3>{{ $spell->name }}</h3>
-                    <p>{{ $spell->school->name }}, Level {{ $spell->level }}</p>
-                    <p>
-                        <strong>Components:</strong>
-                        @foreach ($spell->comp['comp'] as $key => $value)
-                            @if ($value == true)
-                                <span>{{ strtoupper($key) }}{{ $loop->remaining > 0 ? "," : "" }} </span>
+                        <h3>{{ $spell->name }}</h3>
+                        <p>{{ $spell->school->name }}, Level {{ $spell->level }}</p>
+                        <p><strong>Casting time:</strong> {{ $spell->casting_time }}</p>
+                        <p><strong>Range:</strong> {{ $spell->range > 0 ? $spell->range : "touch." }} {{ $spell->range > 0 ? "feet." : "" }}</p>
+                        <p>
+                            <strong>Components:</strong>
+                            @foreach ($spell->comp['comp'] as $key => $value)
+                                @if ($value == true)
+                                    <span>{{ strtoupper($key) }}{{ $loop->remaining > 0 ? "," : "" }} </span>
+                                @endif
+                            @endforeach
+                            
+                            @if ($spell->comp['comp_spec'])
+                                <span>({{ $spell->comp['comp_spec'] }})</span>
                             @endif
-                        @endforeach
-                        
-                        @if ($spell->comp['comp_spec'])
-                            <span>({{ $spell->comp['comp_spec'] }})</span>
-                        @endif
-                    </p>
-                    <p>{{ $spell->desc_en }}</p>
-                    <p><em><strong>Norsk: </strong>{{ $spell->desc_no }}</em></p>
-                    
-                    @dump($spell)
-                    <hr>
+                        </p>
+                        <p><strong>Duration:</strong> {{ $spell->duration }}</p>
+                        <p>{{ $spell->desc_en }}</p>
+                        <p><em><strong>Norsk: </strong>{{ $spell->desc_no }}</em></p>
+                        <hr>
                     @endforeach
                 </div>
             </div>
