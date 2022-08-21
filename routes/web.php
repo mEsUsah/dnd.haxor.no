@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CharactersController;
+use App\Http\Controllers\RacesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +22,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware('auth')->group(function(){
+    Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
+    Route::get('races', [RacesController::class, 'index'])->name('races');
+    Route::post('race', [RacesController::class, 'create']);
+});
