@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RacesController;
 use App\Http\Controllers\SchoolsController;
+use App\Http\Controllers\SpellsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,7 @@ Route::middleware('auth')->group(function(){
     
     Route::get('schools', [SchoolsController::class, 'index'])->name('schools');
     Route::post('school', [SchoolsController::class, 'create']);
+    
+    Route::get('spells', [SpellsController::class, 'index'])->name('spells');
+    Route::post('spell', [SpellsController::class, 'create']);
 });
