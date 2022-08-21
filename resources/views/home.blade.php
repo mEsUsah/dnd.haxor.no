@@ -15,6 +15,7 @@
                     @endif
 
                     <ul>
+                        <li><a href="{{ route('characters') }}">{{ __('Characters') }}</a></li>
                         <li><a href="{{ route('races') }}">{{ __('Races') }}</a></li>
                         <li><a href="{{ route('schools') }}">{{ __('Schools') }}</a></li>
                         <li><a href="{{ route('spells') }}">{{ __('Spells') }}</a></li>
