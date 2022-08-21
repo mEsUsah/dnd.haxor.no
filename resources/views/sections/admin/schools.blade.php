@@ -54,10 +54,8 @@
                 <div class="card-body">
                     @foreach ($schools as $school)
                     <h3>{{ $school->name }}</h3>
-                    <h4>Description (English)</h4>
                     <p>{{ $school->desc_en }}</p>
-                    <h4>Description (Norsk)</h4>
-                    <p>{{ $school->desc_no }}</p>
+                    <p><em><strong>Norsk: </strong>{{ $school->desc_no }}</em></p>
                     <hr>
                     @endforeach
                 </div>
