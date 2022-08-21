@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CharactersController;
 use App\Http\Controllers\RacesController;
+use App\Http\Controllers\SchoolsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +28,7 @@ Route::middleware('auth')->group(function(){
     
     Route::get('races', [RacesController::class, 'index'])->name('races');
     Route::post('race', [RacesController::class, 'create']);
+    
+    Route::get('schools', [SchoolsController::class, 'index'])->name('schools');
+    Route::post('school', [SchoolsController::class, 'create']);
 });

@@ -16,6 +16,7 @@
 
                     <ul>
                         <li><a href="{{ route('races') }}">{{ __('Races') }}</a></li>
+                        <li><a href="{{ route('schools') }}">{{ __('Schools') }}</a></li>
                     </ul>
                 </div>
             </div>
