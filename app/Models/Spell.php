@@ -22,4 +22,9 @@ class Spell extends Model
             set: fn ($value) => json_encode($value),
         );
     }
+
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
 }
