@@ -168,7 +168,7 @@
                 <div class="card-body">
                     @foreach ($spells as $spell)
                         <h3>{{ $spell->name }}</h3>
-                        <p>{{ $spell->school->name }}, Level {{ $spell->level }}</p>
+                        <p>{{ $spell->school->name }} {{ $spell->level == 0 ? "Cantrip" : ", Level " . $spell->level }}</p>
                         <p><strong>Casting time:</strong> {{ $spell->casting_time }}</p>
                         <p><strong>Range:</strong> {{ $spell->range > 0 ? $spell->range : "touch." }} {{ $spell->range > 0 ? "feet." : "" }}</p>
                         <p>
