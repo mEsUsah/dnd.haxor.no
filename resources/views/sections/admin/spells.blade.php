@@ -168,8 +168,15 @@
                 <div class="card-body">
                     @foreach ($spells as $spell)
                     <h3>{{ $spell->name }}</h3>
+                    <p>{{ $spell->school->name }}, Level {{ $spell->level }}</p>
                     <p>{{ $spell->desc_en }}</p>
                     <p><em><strong>Norsk: </strong>{{ $spell->desc_no }}</em></p>
+                    @foreach ($spell->comp['comp'] as $key => $value)
+                        @if ($value == true)
+                            <span>{{ $key }} </span>
+                        @endif
+                    @endforeach
+                    @dump($spell->comp['comp'])
                     <hr>
                     @endforeach
                 </div>

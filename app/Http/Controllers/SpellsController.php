@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\School;
 use App\Models\Spell;
+use App\Models\School;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class SpellsController extends Controller
 {
@@ -32,6 +33,8 @@ class SpellsController extends Controller
         // $table->string('comp_spec')->default("");
         // $table->string('desc_en')->default("");
         // $table->string('desc_no')->default("");
+
+        Log::debug($request);
         
         $validated = $request->validate([
             'name' => ['required','string'],
@@ -40,9 +43,6 @@ class SpellsController extends Controller
             'casting_time' => ['required','integer'],
             'range' => ['required','integer'],
             'duration' => ['required','integer'],
-            'comp_v' => ['nullable','string'],
-            'comp_s' => ['nullable','string'],
-            'comp_m' => ['nullable','string'],
             'comp_spec' => ['nullable','string'],
             'desc_en' => ['nullable','string'],
             'desc_no' => ['nullable','string'],
@@ -58,9 +58,9 @@ class SpellsController extends Controller
         $school->duration = $validated['duration'];
         $school->comp = [
             'comp' => [
-                'v' => isset($validated['comp_v']),
-                's' => isset($validated['comp_s']),
-                'm' => isset($validated['comp_m']),
+                'v' => isset($request['comp_v']),
+                's' => isset($request['comp_s']),
+                'm' => isset($request['comp_m']),
             ],
             'comp_spec' => $validated['comp_spec'],
         ];
