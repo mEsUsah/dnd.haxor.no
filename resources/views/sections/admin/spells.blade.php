@@ -169,14 +169,22 @@
                     @foreach ($spells as $spell)
                     <h3>{{ $spell->name }}</h3>
                     <p>{{ $spell->school->name }}, Level {{ $spell->level }}</p>
+                    <p>
+                        <strong>Components:</strong>
+                        @foreach ($spell->comp['comp'] as $key => $value)
+                            @if ($value == true)
+                                <span>{{ strtoupper($key) }}{{ $loop->remaining > 0 ? "," : "" }} </span>
+                            @endif
+                        @endforeach
+                        
+                        @if ($spell->comp['comp_spec'])
+                            <span>({{ $spell->comp['comp_spec'] }})</span>
+                        @endif
+                    </p>
                     <p>{{ $spell->desc_en }}</p>
                     <p><em><strong>Norsk: </strong>{{ $spell->desc_no }}</em></p>
-                    @foreach ($spell->comp['comp'] as $key => $value)
-                        @if ($value == true)
-                            <span>{{ $key }} </span>
-                        @endif
-                    @endforeach
-                    @dump($spell->comp['comp'])
+                    
+                    @dump($spell)
                     <hr>
                     @endforeach
                 </div>
