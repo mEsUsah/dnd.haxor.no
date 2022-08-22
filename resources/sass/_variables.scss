@@ -5,3 +5,27 @@ $body-bg: #f8fafc;
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
+
+@font-face {
+    font-family: 'Spectral SC Regular';
+    src: url('/css/SpectralSC-Regular.ttf');
+}
+@font-face {
+    font-family: 'Spectral SC Medium';
+    src: url('/css/SpectralSC-Medium.ttf');
+}
+@font-face {
+    font-family: 'Spectral SC Semibold';
+    src: url('/css/SpectralSC-Semibold.ttf');
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('/css/roboto.regular.ttf');
+}
+
+
+
+// Colors
+
+$accent: #822000;

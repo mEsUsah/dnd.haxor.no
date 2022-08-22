@@ -6,7 +6,9 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+@import 'general.scss';
 
 
 //Components
-@import 'general.scss';
+@import 'components/card';
+@import 'components/spell';
