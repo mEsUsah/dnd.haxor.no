@@ -44,12 +44,9 @@
                             <div class="col-sm-9">
                                 <select class="form-select" aria-label="Default select example" name="size_id">
                                     <option selected>Select...</option>
-                                        <option value="1">Tiny</option>
-                                        <option value="2">Small</option>
-                                        <option value="3">Medium</option>
-                                        <option value="4">Large</option>
-                                        <option value="5">Huge</option>
-                                        <option value="6">Gargantuan</option>
+                                    @foreach (config('variables.cratureSize') as $id => $size)
+                                        <option value="{{ $id }}">{{ $size }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

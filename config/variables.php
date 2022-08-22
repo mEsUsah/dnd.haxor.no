@@ -1,6 +1,14 @@
 <?php
 
 return [
+    'cratureSize' => [
+        '1' => 'Tiny',
+        '2' => 'Small',
+        '3' => 'Medium',
+        '4' => 'Large',
+        '5' => 'Huge',
+        '6' => 'Gargantuan',
+    ],
     'spellLevel' => [
         '0' => 'Cantrip',
         '1' => '1',
