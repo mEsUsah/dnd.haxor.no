@@ -109,12 +109,9 @@
                             <div class="col-sm-9">
                                 <select class="form-select" aria-label="Default select example" name="form" id="form">
                                     <option selected>Select...</option>
-                                    <option value="0">Touch</option>
-                                    <option value="1">Cone</option>
-                                    <option value="2">Cube</option>
-                                    <option value="3">Line</option>
-                                    <option value="4">Sphere</option>
-
+                                    @foreach (config('variables.areaOfEffect') as $id => $effect)
+                                        <option value="{{ $id }}">{{ $effect }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -163,33 +160,48 @@
                     </form>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header">{{ __('Spells') }}</div>
-                <div class="card-body">
-                    @foreach ($spells as $spell)
+
+            {{-- @dump(config('variables.areaOfEffect')) --}}
+
+            <section>
+                @foreach ($spells as $spell)
+                    <div class="dnd-card dnd-card--clear">
                         <h3>{{ $spell->name }}</h3>
-                        <p>{{ $spell->school->name }} {{ $spell->level == 0 ? "Cantrip" : ", Level " . $spell->level }}</p>
-                        <p><strong>Casting time:</strong> {{ $spell->casting_time }}</p>
-                        <p><strong>Range:</strong> {{ $spell->range > 0 ? $spell->range : "touch." }} {{ $spell->range > 0 ? "feet." : "" }}</p>
-                        <p>
-                            <strong>Components:</strong>
-                            @foreach ($spell->comp['comp'] as $key => $value)
-                                @if ($value == true)
-                                    <span>{{ strtoupper($key) }}{{ $loop->remaining > 0 ? "," : "" }} </span>
-                                @endif
-                            @endforeach
-                            
-                            @if ($spell->comp['comp_spec'])
-                                <span>({{ $spell->comp['comp_spec'] }})</span>
-                            @endif
-                        </p>
-                        <p><strong>Duration:</strong> {{ $spell->duration }}</p>
+                        <p class="subtitle">{{ $spell->school->name }} {{ $spell->level == 0 ? "Cantrip" : ", Level " . $spell->level }}</p>
+                        <div class="dnd-spell__details">
+                            <div class="dnd-spell__detail">
+                                <label>Casting time:</label>
+                                <span>{{ $spell->casting_time }}</span>
+                            </div>
+                            <div class="dnd-spell__detail">
+                                <label>Range:</label>
+                                <span>{{ $spell->range > 0 ? $spell->range : "touch." }} {{ $spell->range > 0 ? "feet." : "" }}</span>
+                            </div>
+                            <div class="dnd-spell__detail">
+                                <label>Components:</label>
+                                <span>
+                                    @foreach ($spell->comp['comp'] as $key => $value)
+                                        @if ($value == true)
+                                            <span>{{ strtoupper($key) }}{{ $loop->remaining > 0 ? "," : "" }} </span>
+                                        @endif
+                                    @endforeach
+                                    
+                                    @if ($spell->comp['comp_spec'])
+                                        <span>({{ $spell->comp['comp_spec'] }})</span>
+                                    @endif
+                                </span>
+                            </div>
+                            <div class="dnd-spell__detail">
+                                <label>Duration:</label>
+                                <span>{{ $spell->duration }}</span>
+                            </div>
+                        </div>
+
                         <p>{{ $spell->desc_en }}</p>
                         <p><em><strong>Norsk: </strong>{{ $spell->desc_no }}</em></p>
-                        <hr>
-                    @endforeach
-                </div>
-            </div>
+                    </div>
+                @endforeach
+            </section>
         </div>
     </div>
 </div>
