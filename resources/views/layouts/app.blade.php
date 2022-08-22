@@ -23,6 +23,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Styles -->
+    <link href="{{ asset('css/lib.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('styles')
 </head>
