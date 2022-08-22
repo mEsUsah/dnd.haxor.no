@@ -75,11 +75,9 @@
                             <div class="col-sm-9">
                                 <select class="form-select" aria-label="Default select example" name="casting_time" id="casting_time">
                                     <option selected>Select...</option>
-                                    <option value="1">1 Reaction</option>
-                                    <option value="2">1 Bonus Action</option>
-                                    <option value="3">1 Action</option>
-                                    <option value="4">1 Minute</option>
-
+                                    @foreach (config('variables.castingTime') as $id => $castingTime)
+                                        <option value="{{ $id }}">{{ $castingTime }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
