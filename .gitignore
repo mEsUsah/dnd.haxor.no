@@ -1,4 +1,8 @@
 /node_modules
+/public/css/app.css
+/public/css/lib.css
+/public/js/app.js
+/public/mix-manifest.json
 /public/build
 /public/hot
 /public/storage
