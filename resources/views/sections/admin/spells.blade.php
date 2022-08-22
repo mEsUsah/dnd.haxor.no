@@ -161,7 +161,7 @@
                         <div class="dnd-spell__details">
                             <div class="dnd-spell__detail">
                                 <label>Casting time:</label>
-                                <span>{{ $spell->casting_time }}</span>
+                                <span>{{ config("variables.castingTime.{$spell->casting_time}") }}</span>
                             </div>
                             <div class="dnd-spell__detail">
                                 <label>Range:</label>
@@ -183,7 +183,7 @@
                             </div>
                             <div class="dnd-spell__detail">
                                 <label>Duration:</label>
-                                <span>{{ $spell->duration }}</span>
+                                <span>{{ config("variables.duration.{$spell->duration}") }}</span>
                             </div>
                         </div>
 
