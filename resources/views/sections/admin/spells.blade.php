@@ -89,17 +89,9 @@
                             <div class="col-sm-9">
                                 <select class="form-select" aria-label="Default select example" name="duration" id="duration">
                                     <option selected>Select...</option>
-                                    <option value="0">Instantaneous</option>
-                                    <option value="1">1 round</option>
-                                    <option value="2">1 minute</option>
-                                    <option value="3">1 minute - Consentrate</option>
-                                    <option value="4">10 minutes</option>
-                                    <option value="5">10 minutes - Consentrate</option>
-                                    <option value="6">1 hour</option>
-                                    <option value="7">1 hour - Consentrate</option>
-                                    <option value="8">8 hours</option>
-                                    <option value="9">8 hours - Consentrate</option>
-                                    <option value="9">Until despelled</option>
+                                    @foreach (config('variables.duration') as $id => $duration)
+                                        <option value="{{ $id }}">{{ $duration }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
