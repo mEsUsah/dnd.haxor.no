@@ -49,14 +49,13 @@
                     </form>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header">{{ __('Schools') }}</div>
-                <div class="card-body">
                     @foreach ($schools as $school)
-                    <h3>{{ $school->name }}</h3>
-                    <p>{{ $school->desc_en }}</p>
-                    <p><em><strong>Norsk: </strong>{{ $school->desc_no }}</em></p>
-                    <hr>
+                    <div class="dnd-card dnd-card--clear">
+                        <h3>{{ $school->name }}</h3>
+                        <hr>
+                        <p>{{ $school->desc_en }}</p>
+                        <p><em><strong>Norsk: </strong>{{ $school->desc_no }}</em></p>
+                    </div>
                     @endforeach
                 </div>
             </div>
