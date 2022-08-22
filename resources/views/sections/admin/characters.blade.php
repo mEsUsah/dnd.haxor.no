@@ -44,7 +44,7 @@
                                 <tr>
                                     <td>{{ $character->user->name }}</td>
                                     <td>{{ $character->name }}</td>
-                                    <td>{{ $character->race_id }}</td>
+                                    <td>{{ $character->race->name }}</td>
                                     <td>{{ $character->class_id }} / {{ $character->class_lvl }}</td>
                                 </tr>
                             @endforeach
