@@ -18,11 +18,20 @@
                             <input type="text" class="form-control" id="name" aria-describedby="emailHelp" name="name">
                           </div>
                         <div class="mb-3">
-                            <label for="name" class="form-label">User</label>
+                            <label for="user_id" class="form-label">User</label>
                             <select class="form-select" aria-label="Default select example" name="user_id">
                                 <option selected>Select...</option>
                                 @foreach ($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="race_id" class="form-label">Race</label>
+                            <select class="form-select" aria-label="Default select example" name="race_id">
+                                <option selected>Select...</option>
+                                @foreach ($races as $race)
+                                    <option value="{{ $race->id }}">{{ $race->name }}</option>
                                 @endforeach
                             </select>
                         </div>
