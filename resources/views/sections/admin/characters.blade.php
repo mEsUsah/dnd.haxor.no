@@ -42,7 +42,7 @@
                         <tbody>
                             @foreach ($characters as $character)
                                 <tr>
-                                    <td>{{ $character->user_id }}</td>
+                                    <td>{{ $character->user->name }}</td>
                                     <td>{{ $character->name }}</td>
                                     <td>{{ $character->race_id }}</td>
                                     <td>{{ $character->class_id }} / {{ $character->class_lvl }}</td>
