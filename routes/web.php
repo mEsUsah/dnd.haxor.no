@@ -36,6 +36,8 @@ Route::middleware('auth')->group(function(){
     
     Route::get('classes', [ClassesController::class, 'index'])->name('classes');
     Route::post('class', [ClassesController::class, 'create']);
+    Route::get('class/{id}/edit', [ClassesController::class, 'edit']);
+    Route::post('class/{id}/update', [ClassesController::class, 'update']);
     
     Route::get('schools', [SchoolsController::class, 'index'])->name('schools');
     Route::post('school', [SchoolsController::class, 'create']);
