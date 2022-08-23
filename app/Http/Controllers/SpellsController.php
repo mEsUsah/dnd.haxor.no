@@ -22,20 +22,6 @@ class SpellsController extends Controller
 
     public function create(Request $request)
     {
-        // $table->string('name');
-        // $table->integer('level');
-        // $table->integer('school_id');
-        // $table->integer('casting_time');
-        // $table->integer('form');
-        // $table->integer('range');
-        // $table->integer('duration');
-        // $table->json('comp')->default(new Expression('(JSON_ARRAY())'));
-        // $table->string('comp_spec')->default("");
-        // $table->string('desc_en')->default("");
-        // $table->string('desc_no')->default("");
-
-        Log::debug($request);
-        
         $validated = $request->validate([
             'name' => ['required','string'],
             'level' => ['required','integer'],
