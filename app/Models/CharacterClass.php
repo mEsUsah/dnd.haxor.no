@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Spell;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class CharacterClass extends Model
 {
@@ -15,4 +17,9 @@ class CharacterClass extends Model
      * @var string
      */
     protected $table = 'classes';
+
+    public function spells()
+    {
+        return $this->belongsToMany(Spell::class,'class_spell','class_id');
+    }
 }

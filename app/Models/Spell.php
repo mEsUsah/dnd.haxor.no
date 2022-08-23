@@ -27,4 +27,9 @@ class Spell extends Model
     {
         return $this->belongsTo(School::class);
     }
+
+    public function characterClass()
+    {
+        return $this->belongsToMany(CharacterClass::class);
+    }
 }
