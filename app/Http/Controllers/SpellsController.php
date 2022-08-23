@@ -58,4 +58,20 @@ class SpellsController extends Controller
 
         return redirect('/spells');
     }
+
+    public static function getSpells()
+    {
+        return [
+            'Cantip' => Spell::where('level', 0)->get(),
+            'Level 1' => Spell::where('level', 1)->get(),
+            'Level 2' => Spell::where('level', 2)->get(),
+            'Level 3' => Spell::where('level', 3)->get(),
+            'Level 4' => Spell::where('level', 4)->get(),
+            'Level 5' => Spell::where('level', 5)->get(),
+            'Level 6' => Spell::where('level', 6)->get(),
+            'Level 7' => Spell::where('level', 7)->get(),
+            'Level 8' => Spell::where('level', 8)->get(),
+            'Level 9' => Spell::where('level', 9)->get(),
+        ];
+    }
 }
