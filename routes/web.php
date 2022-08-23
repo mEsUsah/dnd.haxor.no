@@ -35,14 +35,17 @@ Route::middleware('auth')->group(function(){
     Route::post('race', [RacesController::class, 'create']);
     
     Route::get('classes', [ClassesController::class, 'index'])->name('classes.index');
-    Route::get('class/create', [ClassesController::class, 'create'])->name('classes.create');
-    Route::post('class', [ClassesController::class, 'store'])->name('classes.store');
-    Route::get('class/{id}/edit', [ClassesController::class, 'edit'])->name('classes.edit');
-    Route::post('class/{id}', [ClassesController::class, 'update'])->name('classes.update');
-    Route::delete('class/{id}', [ClassesController::class, 'destroy'])->name('classes.destroy');
+    Route::get('classes/create', [ClassesController::class, 'create'])->name('classes.create');
+    Route::post('classes', [ClassesController::class, 'store'])->name('classes.store');
+    Route::get('classes/{id}/edit', [ClassesController::class, 'edit'])->name('classes.edit');
+    Route::post('classes/{id}', [ClassesController::class, 'update'])->name('classes.update');
+    Route::delete('classes/{id}', [ClassesController::class, 'destroy'])->name('classes.destroy');
     
-    Route::get('schools', [SchoolsController::class, 'index'])->name('schools');
-    Route::post('school', [SchoolsController::class, 'create']);
+    Route::get('schools', [SchoolsController::class, 'index'])->name('schools.index');
+    Route::get('schools/create', [SchoolsController::class, 'create'])->name('schools.create');
+    Route::post('schools', [SchoolsController::class, 'store'])->name('schools.store');
+    Route::get('schools/{id}/edit', [SchoolsController::class, 'edit'])->name('schools.edit');
+    Route::post('schools/{id}', [SchoolsController::class, 'update'])->name('schools.update');
     
     Route::get('spells', [SpellsController::class, 'index'])->name('spells');
     Route::post('spell', [SpellsController::class, 'create']);
