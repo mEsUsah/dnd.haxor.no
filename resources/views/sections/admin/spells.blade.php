@@ -144,7 +144,6 @@
                 </div>
             </div>
 
-            {{-- @dump(config('variables.areaOfEffect')) --}}
 
             <section>
                 @foreach ($spells as $spell)

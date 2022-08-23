@@ -12,17 +12,22 @@ class ClassesController extends Controller
     public function index()
     {
         $classes = CharacterClass::all();
-        return view('sections.admin.classes', [
+        return view('sections.admin.classes.index', [
             'classes' => $classes,
+        ]);
+    }
+    public function create()
+    {
+        return view('sections.admin.classes.form', [
             'spells' => SpellsController::getSpells(),
             'class' => null,
             'checkeds' => null,
-            'postUrl' => '/class',
-            'deleteUrl' => null
+            'formAction' => route('classes.store'),
+            'formMethod' => 'POST'
         ]);
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         Log::debug($request);
         $characterClass = new CharacterClass();
@@ -32,13 +37,11 @@ class ClassesController extends Controller
         $spells = Spell::find($request['spells']);
         $characterClass->spells()->attach($spells);
         
-        return redirect('/classes');
+        return redirect(route('classes.index'));
     }
 
     public function edit($id)
     {
-        $classes = CharacterClass::all();
-
         $class = CharacterClass::where('id',$id)->get()->first();
         
         $checkeds = [];
@@ -46,13 +49,12 @@ class ClassesController extends Controller
             array_push($checkeds, $spell->id);
         }
 
-        return view('sections.admin.classes', [
-            'classes' => $classes,
+        return view('sections.admin.classes.form', [
             'spells' => SpellsController::getSpells(),
             'class' => $class,
             'checkeds' => $checkeds,
-            'postUrl' => "/class/{$id}/update",
-            'deleteUrl' => "/class/{$id}/delete"
+            'formAction' => route('classes.update', ['id' => $id]),
+            'formMethod' => 'POST'
         ]);
     }
 
@@ -65,15 +67,15 @@ class ClassesController extends Controller
         $spells = Spell::find($request['spells']);
         $characterClass->spells()->sync($spells);
         
-        return redirect('/classes');
+        return redirect(route('classes.index'));
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $characterClass = CharacterClass::find($id);
         $characterClass->spells()->detach();
         $characterClass->delete();
 
-        return redirect('/classes');
+        return redirect(route('classes.index'));
     }
 }

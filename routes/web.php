@@ -34,11 +34,12 @@ Route::middleware('auth')->group(function(){
     Route::get('races', [RacesController::class, 'index'])->name('races');
     Route::post('race', [RacesController::class, 'create']);
     
-    Route::get('classes', [ClassesController::class, 'index'])->name('classes');
-    Route::post('class', [ClassesController::class, 'create']);
-    Route::get('class/{id}/edit', [ClassesController::class, 'edit']);
-    Route::post('class/{id}/update', [ClassesController::class, 'update']);
-    Route::post('class/{id}/delete', [ClassesController::class, 'delete']);
+    Route::get('classes', [ClassesController::class, 'index'])->name('classes.index');
+    Route::get('class/create', [ClassesController::class, 'create'])->name('classes.create');
+    Route::post('class', [ClassesController::class, 'store'])->name('classes.store');
+    Route::get('class/{id}/edit', [ClassesController::class, 'edit'])->name('classes.edit');
+    Route::post('class/{id}', [ClassesController::class, 'update'])->name('classes.update');
+    Route::delete('class/{id}', [ClassesController::class, 'destroy'])->name('classes.destroy');
     
     Route::get('schools', [SchoolsController::class, 'index'])->name('schools');
     Route::post('school', [SchoolsController::class, 'create']);
