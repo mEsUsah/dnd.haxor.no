@@ -4,7 +4,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @dump($checkeds)
             <div class="card">
                 <div class="card-header">{{ __('Add Class') }}</div>
                 <div class="card-body">
@@ -44,9 +43,14 @@
                         @endforeach
 
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </div>
-                        
+                    </form>
+                    <form action="{{ $deleteUrl }}" method="POST">
+                        @csrf
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
                     </form>
                 </div>
             </div>

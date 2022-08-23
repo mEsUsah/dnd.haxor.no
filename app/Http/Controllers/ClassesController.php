@@ -39,7 +39,8 @@ class ClassesController extends Controller
             ],
             'class' => null,
             'checkeds' => null,
-            'postUrl' => '/class'
+            'postUrl' => '/class',
+            'deleteUrl' => null
         ]);
     }
 
@@ -94,13 +95,13 @@ class ClassesController extends Controller
             ],
             'class' => $class,
             'checkeds' => $checkeds,
-            'postUrl' => "/class/{$id}/update"
+            'postUrl' => "/class/{$id}/update",
+            'deleteUrl' => "/class/{$id}/delete"
         ]);
     }
 
     public function update(Request $request, $id)
     {
-        Log::debug($request);
         $characterClass = CharacterClass::find($id);
         $characterClass->name = $request['name'];
         $characterClass->save();
@@ -108,6 +109,15 @@ class ClassesController extends Controller
         $spells = Spell::find($request['spells']);
         $characterClass->spells()->sync($spells);
         
+        return redirect('/classes');
+    }
+
+    public function delete($id)
+    {
+        $characterClass = CharacterClass::find($id);
+        $characterClass->spells()->detach();
+        $characterClass->delete();
+
         return redirect('/classes');
     }
 }
