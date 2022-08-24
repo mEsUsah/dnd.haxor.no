@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Spell;
 use Illuminate\Http\Request;
 use App\Models\CharacterClass;
-use Illuminate\Support\Facades\Log;
 
 class ClassesController extends Controller
 {
@@ -27,10 +26,9 @@ class ClassesController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        Log::debug($request);
-        $characterClass = new CharacterClass();
+        $characterClass = CharacterClass::find($id);
         $characterClass->name = $request['name'];
         $characterClass->save();
         
