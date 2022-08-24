@@ -14,7 +14,7 @@
                                 <p class="subtitle">{{ $spell->school->name }} {{ $spell->level == 0 ? "Cantrip" : ", Level " . $spell->level }}</p>
                             </div>
                             <div>
-                                <a href="{{ route('spells.edit', ['id' => $spell->id]) }}" class="btn btn-danger">Edit</a>
+                                <a href="{{ route('spells.edit', ['id' => $spell->id]) }}" class="dnd-button">Edit</a>
                             </div>
                         </div>
                         <div class="dnd-spell__details">
