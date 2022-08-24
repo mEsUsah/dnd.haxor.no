@@ -1,0 +1,20 @@
+.dnd-button{
+    display: inline-block;
+    padding: 0px 6px;
+    border: 0;
+    background-color: $accent;
+    color: white;
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+        color: white;
+
+    }
+
+}
