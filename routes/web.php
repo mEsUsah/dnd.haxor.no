@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CharactersController;
 use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\MonstersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RacesController;
@@ -52,4 +53,10 @@ Route::middleware('auth')->group(function(){
     Route::post('spells', [SpellsController::class, 'store'])->name('spells.store');
     Route::get('spells/{id}/edit', [SpellsController::class, 'edit'])->name('spells.edit');
     Route::post('spells/{id}', [SpellsController::class, 'update'])->name('spells.update');
+    
+    Route::get('monsters', [MonstersController::class, 'index'])->name('monsters.index');
+    Route::get('monsters/create', [SpellsController::class, 'create'])->name('monsters.create');
+    Route::post('monsters', [SpellsController::class, 'store'])->name('monsters.store');
+    Route::get('monsters/{id}/edit', [SpellsController::class, 'edit'])->name('monsters.edit');
+    Route::post('monsters/{id}', [SpellsController::class, 'update'])->name('monsters.update');
 });
