@@ -47,6 +47,9 @@ Route::middleware('auth')->group(function(){
     Route::get('schools/{id}/edit', [SchoolsController::class, 'edit'])->name('schools.edit');
     Route::post('schools/{id}', [SchoolsController::class, 'update'])->name('schools.update');
     
-    Route::get('spells', [SpellsController::class, 'index'])->name('spells');
-    Route::post('spell', [SpellsController::class, 'create']);
+    Route::get('spells', [SpellsController::class, 'index'])->name('spells.index');
+    Route::get('spells/create', [SpellsController::class, 'create'])->name('spells.create');
+    Route::post('spells', [SpellsController::class, 'store'])->name('spells.store');
+    Route::get('spells/{id}/edit', [SpellsController::class, 'edit'])->name('spells.edit');
+    Route::post('spells/{id}', [SpellsController::class, 'update'])->name('spells.update');
 });

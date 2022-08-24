@@ -23,12 +23,15 @@
                         </div>
                     @endif
 
-                    <form action="/spell" method="POST">
+                    <form action="{{ $formAction }}" method="{{ $formMethod }}">
                         @csrf
                         <div class="row mb-3">
                             <label for="name" class="col-sm-3 col-form-label">Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="name" name="name">
+                                <input type="text" class="form-control" id="name" name="name"
+                                @if ($spell)
+                                    value="{{ $spell->name }}"
+                                @endif>
                             </div>
                         </div>
 
@@ -38,7 +41,7 @@
                                 <select class="form-select" aria-label="Default select example" name="school_id">
                                     <option selected>Select...</option>
                                     @foreach ($schools as $school)
-                                        <option value="{{ $school->id }}">{{ $school->name }}</option>
+                                        <option value="{{ $school->id }}" {{ $spell->school_id == $school->id ? 'selected' : '' }}>{{ $school->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -50,7 +53,7 @@
                                 <select class="form-select" aria-label="Default select example" name="level">
                                     <option selected>Select...</option>
                                     @foreach (config('variables.spellLevel') as $id => $level)
-                                        <option value="{{ $id }}">{{ $level }}</option>
+                                        <option value="{{ $id }}" {{ $spell->level == $id ? 'selected' : '' }}>{{ $level }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -59,7 +62,10 @@
                         <div class="row mb-3">
                             <label for="range" class="col-sm-3 col-form-label">Range</label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" id="range" name="range">
+                                <input type="number" class="form-control" id="range" name="range"
+                                @if ($spell)
+                                    value="{{ $spell->range }}"
+                                @endif>
                             </div>
                         </div>
 
@@ -69,7 +75,7 @@
                                 <select class="form-select" aria-label="Default select example" name="casting_time" id="casting_time">
                                     <option selected>Select...</option>
                                     @foreach (config('variables.castingTime') as $id => $castingTime)
-                                        <option value="{{ $id }}">{{ $castingTime }}</option>
+                                        <option value="{{ $id }}" {{ $spell->casting_time == $id ? 'selected' : '' }}>{{ $castingTime }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -81,19 +87,7 @@
                                 <select class="form-select" aria-label="Default select example" name="duration" id="duration">
                                     <option selected>Select...</option>
                                     @foreach (config('variables.duration') as $id => $duration)
-                                        <option value="{{ $id }}">{{ $duration }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="form" class="col-sm-3 col-form-label">Area of effect</label>
-                            <div class="col-sm-9">
-                                <select class="form-select" aria-label="Default select example" name="form" id="form">
-                                    <option selected>Select...</option>
-                                    @foreach (config('variables.areaOfEffect') as $id => $effect)
-                                        <option value="{{ $id }}">{{ $effect }}</option>
+                                        <option value="{{ $id }}" {{ $spell->duration == $id ? 'selected' : '' }}>{{ $duration }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -105,15 +99,25 @@
                             <div class="col-sm-3 col-form-label">Components</div>
                             <div class="col-sm-9">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="comp_v" name="comp_v">
+                                    <input class="form-check-input" type="checkbox" id="comp_v" name="comp_v"
+                                    @if ($spell)
+                                        {{ $spell->comp['comp']['v'] == true ? "checked" : ""}}
+                                    @endif
+                                    >
                                     <label class="form-check-label" for="comp_v">Verbal (V)</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="comp_s" name="comp_s">
+                                    <input class="form-check-input" type="checkbox"  id="comp_s" name="comp_s"
+                                    @if ($spell)
+                                        {{ $spell->comp['comp']['s'] == true ? "checked" : ""}}
+                                    @endif>
                                     <label class="form-check-label" for="comp_s">Somatic (S)</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="comp_m" name="comp_m">
+                                    <input class="form-check-input" type="checkbox" id="comp_m" name="comp_m"
+                                    @if ($spell)
+                                        {{ $spell->comp['comp']['m'] == true ? "checked" : ""}}
+                                    @endif>
                                     <label class="form-check-label" for="comp_m">Material (M)</label>
                                 </div>
                             </div>
@@ -121,7 +125,10 @@
                         <div class="row mb-3">
                             <label for="comp_spec" class="col-sm-3 col-form-label">Material components</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="comp_spec" name="comp_spec">
+                                <input type="text" class="form-control" id="comp_spec" name="comp_spec"
+                                @if ($spell)
+                                    value="{{ $spell->comp['comp_spec'] }}"
+                                @endif>
                             </div>
                         </div>
                         
@@ -129,61 +136,21 @@
 
                         <div class="mb-3">
                             <label for="desc_en" class="form-label">Description English</label>
-                            <textarea class="form-control" id="desc_en" rows="3" name="desc_en"></textarea>
+                            <textarea class="form-control" id="desc_en" rows="3" name="desc_en">{{ $spell ? $spell->desc_en : "" }}</textarea>
                         </div>
                         
                         <div class="mb-3">
                             <label for="desc_no" class="form-label">Description Norwegian</label>
-                            <textarea class="form-control" id="desc_no" rows="3" name="desc_no"></textarea>
+                            <textarea class="form-control" id="desc_no" rows="3" name="desc_no">{{ $spell ? $spell->desc_no : "" }}</textarea>
                         </div>
                         
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                           </div>
                     </form>
                 </div>
             </div>
 
-
-            <section>
-                @foreach ($spells as $spell)
-                    <div class="dnd-card dnd-card--clear">
-                        <h3>{{ $spell->name }}</h3>
-                        <p class="subtitle">{{ $spell->school->name }} {{ $spell->level == 0 ? "Cantrip" : ", Level " . $spell->level }}</p>
-                        <div class="dnd-spell__details">
-                            <div class="dnd-spell__detail">
-                                <label>Casting time:</label>
-                                <span>{{ config("variables.castingTime.{$spell->casting_time}") }}</span>
-                            </div>
-                            <div class="dnd-spell__detail">
-                                <label>Range:</label>
-                                <span>{{ $spell->range > 0 ? $spell->range : "touch." }} {{ $spell->range > 0 ? "feet." : "" }}</span>
-                            </div>
-                            <div class="dnd-spell__detail">
-                                <label>Components:</label>
-                                <span>
-                                    @foreach ($spell->comp['comp'] as $key => $value)
-                                        @if ($value == true)
-                                            <span>{{ strtoupper($key) }}{{ $loop->remaining > 0 ? "," : "" }} </span>
-                                        @endif
-                                    @endforeach
-                                    
-                                    @if ($spell->comp['comp_spec'])
-                                        <span>({{ $spell->comp['comp_spec'] }})</span>
-                                    @endif
-                                </span>
-                            </div>
-                            <div class="dnd-spell__detail">
-                                <label>Duration:</label>
-                                <span>{{ config("variables.duration.{$spell->duration}") }}</span>
-                            </div>
-                        </div>
-
-                        <p>{{ $spell->desc_en }}</p>
-                        <p><em><strong>Norsk: </strong>{{ $spell->desc_no }}</em></p>
-                    </div>
-                @endforeach
-            </section>
         </div>
     </div>
 </div>
