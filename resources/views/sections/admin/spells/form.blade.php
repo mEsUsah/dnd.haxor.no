@@ -41,7 +41,11 @@
                                 <select class="form-select" aria-label="Default select example" name="school_id">
                                     <option selected>Select...</option>
                                     @foreach ($schools as $school)
-                                        <option value="{{ $school->id }}" {{ $spell->school_id == $school->id ? 'selected' : '' }}>{{ $school->name }}</option>
+                                        <option value="{{ $school->id }}" 
+                                            @if ($spell)
+                                                {{ $spell->school_id == $school->id ? 'selected' : '' }}
+                                            @endif
+                                                >{{ $school->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -53,7 +57,11 @@
                                 <select class="form-select" aria-label="Default select example" name="level">
                                     <option selected>Select...</option>
                                     @foreach (config('variables.spellLevel') as $id => $level)
-                                        <option value="{{ $id }}" {{ $spell->level == $id ? 'selected' : '' }}>{{ $level }}</option>
+                                        <option value="{{ $id }}" 
+                                        @if ($spell)
+                                                {{ $spell->level == $id ? 'selected' : '' }}
+                                        @endif
+                                            >{{ $level }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -75,7 +83,11 @@
                                 <select class="form-select" aria-label="Default select example" name="casting_time" id="casting_time">
                                     <option selected>Select...</option>
                                     @foreach (config('variables.castingTime') as $id => $castingTime)
-                                        <option value="{{ $id }}" {{ $spell->casting_time == $id ? 'selected' : '' }}>{{ $castingTime }}</option>
+                                        <option value="{{ $id }}" 
+                                            @if ($spell)
+                                                {{ $spell->casting_time == $id ? 'selected' : '' }}
+                                            @endif>
+                                                {{ $castingTime }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -87,7 +99,11 @@
                                 <select class="form-select" aria-label="Default select example" name="duration" id="duration">
                                     <option selected>Select...</option>
                                     @foreach (config('variables.duration') as $id => $duration)
-                                        <option value="{{ $id }}" {{ $spell->duration == $id ? 'selected' : '' }}>{{ $duration }}</option>
+                                        <option value="{{ $id }}" 
+                                        @if ($spell)
+                                            {{ $spell->duration == $id ? 'selected' : '' }}
+                                        @endif>
+                                            {{ $duration }}</option>
                                     @endforeach
                                 </select>
                             </div>
