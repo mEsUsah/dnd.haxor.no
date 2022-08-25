@@ -70,4 +70,15 @@ return [
         "8" => 'Natural Good',
         "9" => 'Lawfull Good',
     ],
+    'cratureType' => [
+        "1" => 'Aberration',
+        "2" => 'Beast',
+        "3" => 'Dragon',
+        "4" => 'Giant',
+        "5" => 'Humanoid',
+        "6" => 'Monstrosity',
+        "7" => 'Ooze',
+        "8" => 'Plant',
+        "9" => 'Undead',
+    ],
 ];
