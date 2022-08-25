@@ -20,6 +20,7 @@
                         <li><a href="{{ route('classes.index') }}">{{ __('Classes') }}</a></li>
                         <li><a href="{{ route('schools.index') }}">{{ __('Schools') }}</a></li>
                         <li><a href="{{ route('spells.index') }}">{{ __('Spells') }}</a></li>
+                        <li><a href="{{ route('monsters.index') }}">{{ __('Monsters') }}</a></li>
                     </ul>
                 </div>
             </div>
