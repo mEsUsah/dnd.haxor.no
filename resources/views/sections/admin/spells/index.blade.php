@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="">
             <a href="{{ route('spells.create') }}" class="btn btn-success">Add Spell</a>
             <section>
                 @foreach ($spells as $spell)
@@ -31,6 +31,14 @@
                                 <span>{{ $spell->range > 0 ? $spell->range : "touch." }} {{ $spell->range > 0 ? "feet." : "" }}</span>
                             </div>
                             <div class="dnd-spell__detail">
+                                <label>Duration:</label>
+                                <span>{{ config("variables.duration.{$spell->duration}") }}</span>
+                            </div>
+                            <div class="dnd-spell__detail">
+                                <label>Area of Effect:</label>
+                                <span>{{ config("variables.areaOfEffect.{$spell->area}") }}</span>
+                            </div>
+                            <div class="dnd-spell__detail">
                                 <label>Components:</label>
                                 <span>
                                     @foreach ($spell->comp['comp'] as $key => $value)
@@ -43,10 +51,6 @@
                                         <span>({{ $spell->comp['comp_spec'] }})</span>
                                     @endif
                                 </span>
-                            </div>
-                            <div class="dnd-spell__detail">
-                                <label>Duration:</label>
-                                <span>{{ config("variables.duration.{$spell->duration}") }}</span>
                             </div>
                         </div>
 
