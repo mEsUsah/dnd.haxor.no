@@ -44,7 +44,6 @@ class SpellsController extends Controller
             'comp_spec' => ['nullable','string'],
             'desc_en' => ['nullable','string'],
             'desc_no' => ['nullable','string'],
-            'ritual' => ['nullable','integer'],
         ]);
 
         $school = new Spell;
