@@ -43,11 +43,12 @@ class SpellsController extends Controller
             'comp_spec' => ['nullable','string'],
             'desc_en' => ['nullable','string'],
             'desc_no' => ['nullable','string'],
-
+            'ritual' => ['nullable','integer'],
         ]);
 
         $school = new Spell;
         $school->name = $validated['name'];
+        $school->ritual = isset($request['ritual']);
         $school->level = $validated['level'];
         $school->school_id = $validated['school_id'];
         $school->casting_time = $validated['casting_time'];
@@ -93,11 +94,11 @@ class SpellsController extends Controller
             'comp_spec' => ['nullable','string'],
             'desc_en' => ['nullable','string'],
             'desc_no' => ['nullable','string'],
-
         ]);
 
         $school = Spell::find($id);
         $school->name = $validated['name'];
+        $school->ritual = isset($request['ritual']);
         $school->level = $validated['level'];
         $school->school_id = $validated['school_id'];
         $school->casting_time = $validated['casting_time'];

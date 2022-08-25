@@ -11,7 +11,11 @@
                         <div class="dnd-card__header">
                             <div>
                                 <h3>{{ $spell->name }}</h3>
-                                <p class="subtitle">{{ $spell->school->name }} {{ $spell->level == 0 ? "Cantrip" : ", Level " . $spell->level }}</p>
+                                <p class="subtitle">
+                                    {{ $spell->school->name }} 
+                                    {{ $spell->level == 0 ? "Cantrip" : ", Level " . $spell->level }}
+                                    {{ $spell->ritual == true ? "(Ritual)" : ""}}
+                                </p>
                             </div>
                             <div>
                                 <a href="{{ route('spells.edit', ['id' => $spell->id]) }}" class="dnd-button">Edit</a>

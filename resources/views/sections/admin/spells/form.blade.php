@@ -68,6 +68,20 @@
                         </div>
 
                         <div class="row mb-3">
+                            <div class="col-sm-3 col-form-label"></div>
+                            <div class="col-sm-9">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="ritual" name="ritual"
+                                    @if ($spell)
+                                        {{ $spell->ritual == 1 ? "checked" : ""}}
+                                    @endif
+                                    >
+                                    <label class="form-check-label" for="ritual">Ritual</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="range" class="col-sm-3 col-form-label">Range</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" id="range" name="range"
