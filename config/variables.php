@@ -30,7 +30,7 @@ return [
     'areaOfEffect' => [
         "0" => 'Self',
         "1" => 'Touch',
-        "2" => 'Creature',
+        "2" => 'Spot',
         "3" => 'Cone',
         "4" => 'Cube',
         "5" => 'Line',
