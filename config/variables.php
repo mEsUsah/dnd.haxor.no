@@ -28,11 +28,13 @@ return [
         '4' => '1 Minute',
     ],
     'areaOfEffect' => [
-        "0" => 'Touch',
-        "1" => 'Cone',
-        "2" => 'Cube',
-        "3" => 'Line',
-        "4" => 'Sphere',
+        "0" => 'Self',
+        "1" => 'Touch',
+        "2" => 'Creature',
+        "3" => 'Cone',
+        "4" => 'Cube',
+        "5" => 'Line',
+        "6" => 'Sphere',
     ],
     'duration' => [
         '0' => 'Instantaneous',
