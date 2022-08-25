@@ -55,8 +55,8 @@ Route::middleware('auth')->group(function(){
     Route::post('spells/{id}', [SpellsController::class, 'update'])->name('spells.update');
     
     Route::get('monsters', [MonstersController::class, 'index'])->name('monsters.index');
-    Route::get('monsters/create', [SpellsController::class, 'create'])->name('monsters.create');
-    Route::post('monsters', [SpellsController::class, 'store'])->name('monsters.store');
-    Route::get('monsters/{id}/edit', [SpellsController::class, 'edit'])->name('monsters.edit');
-    Route::post('monsters/{id}', [SpellsController::class, 'update'])->name('monsters.update');
+    Route::get('monsters/create', [MonstersController::class, 'create'])->name('monsters.create');
+    Route::post('monsters', [MonstersController::class, 'store'])->name('monsters.store');
+    Route::get('monsters/{id}/edit', [MonstersController::class, 'edit'])->name('monsters.edit');
+    Route::post('monsters/{id}', [MonstersController::class, 'update'])->name('monsters.update');
 });
