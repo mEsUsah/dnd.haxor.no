@@ -59,4 +59,5 @@ Route::middleware('auth')->group(function(){
     Route::post('monsters', [MonstersController::class, 'store'])->name('monsters.store');
     Route::get('monsters/{id}/edit', [MonstersController::class, 'edit'])->name('monsters.edit');
     Route::post('monsters/{id}', [MonstersController::class, 'update'])->name('monsters.update');
+    Route::post('monsters/{id}/destroy', [MonstersController::class, 'destroy'])->name('monsters.destroy');
 });
