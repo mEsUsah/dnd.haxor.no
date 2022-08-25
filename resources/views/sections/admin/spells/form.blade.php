@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="">
             <div class="card">
                 <div class="card-header">{{ __('Add Spell') }}</div>
                 <div class="card-body">
@@ -88,6 +88,22 @@
                                 @if ($spell)
                                     value="{{ $spell->range }}"
                                 @endif>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="level" class="col-sm-3 col-form-label">Area of Effect</label>
+                            <div class="col-sm-9">
+                                <select class="form-select" aria-label="Default select example" name="area">
+                                    <option selected>Select...</option>
+                                    @foreach (config('variables.areaOfEffect') as $id => $level)
+                                        <option value="{{ $id }}" 
+                                        @if ($spell)
+                                                {{ $spell->area == $id ? 'selected' : '' }}
+                                        @endif
+                                            >{{ $level }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

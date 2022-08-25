@@ -39,6 +39,7 @@ class SpellsController extends Controller
             'school_id' => ['required','integer'],
             'casting_time' => ['required','integer'],
             'range' => ['required','integer'],
+            'area' => ['required','integer'],
             'duration' => ['required','integer'],
             'comp_spec' => ['nullable','string'],
             'desc_en' => ['nullable','string'],
@@ -53,6 +54,7 @@ class SpellsController extends Controller
         $school->school_id = $validated['school_id'];
         $school->casting_time = $validated['casting_time'];
         $school->range = $validated['range'];
+        $school->area = $validated['area'];
         $school->duration = $validated['duration'];
         $school->comp = [
             'comp' => [
@@ -90,6 +92,7 @@ class SpellsController extends Controller
             'school_id' => ['required','integer'],
             'casting_time' => ['required','integer'],
             'range' => ['required','integer'],
+            'area' => ['required','integer'],
             'duration' => ['required','integer'],
             'comp_spec' => ['nullable','string'],
             'desc_en' => ['nullable','string'],
@@ -103,6 +106,7 @@ class SpellsController extends Controller
         $school->school_id = $validated['school_id'];
         $school->casting_time = $validated['casting_time'];
         $school->range = $validated['range'];
+        $school->area = $validated['area'];
         $school->duration = $validated['duration'];
         $school->comp = [
             'comp' => [
