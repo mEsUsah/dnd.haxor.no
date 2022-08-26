@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Monster;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Challenge extends Model
 {
@@ -11,6 +12,6 @@ class Challenge extends Model
 
     public function monsters()
     {
-        return $this->belongsToMany(Monster::class);
+        return $this->hasMany(Monster::class);
     }
 }
