@@ -91,7 +91,7 @@ class MonstersController extends Controller
      */
     public function edit($id)
     {
-        $monster = Monster::find($id);
+        $monster = Monster::findOrFail($id);
         return view('sections.admin.monsters.form', [
             'monster' => $monster,
             'formAction' => route('monsters.update', ['id' => $id]),
@@ -132,7 +132,7 @@ class MonstersController extends Controller
             'challenge' => ['required','string'],
         ]);
 
-        $monster = Monster::find($id);
+        $monster = Monster::findOrFail($id);
         $monster->fill($validated);
         $monster->save();
 
