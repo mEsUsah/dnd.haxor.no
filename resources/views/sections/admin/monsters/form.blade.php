@@ -75,10 +75,10 @@
                                     aria-label="Default select example" 
                                     name="size_id">
                                         <option selected>Select...</option>
-                                        @foreach (config('variables.cratureSize') as $id => $size)
-                                            <option value="{{ $id }}" 
-                                                {{ old('size_id', optional($monster ?? null)->size_id) == $id ? 'selected' : '' }}>
-                                                {{ $size }}
+                                        @foreach ($sizes as $size)
+                                            <option value="{{ $size->id }}" 
+                                                {{ old('size_id', optional($monster ?? null)->size_id) == $size->id ? 'selected' : '' }}>
+                                                {{ $size->name }}
                                             </option>
                                         @endforeach
                                 </select>

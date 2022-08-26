@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Alignment;
 use App\Models\Challenge;
 use App\Models\Monster;
+use App\Models\Size;
 use Illuminate\Http\Request;
 
 class MonstersController extends Controller
@@ -29,10 +30,12 @@ class MonstersController extends Controller
      */
     public function create()
     {
+        $sizes = Size::all();
         $alignments = Alignment::all();
         $challenges = Challenge::all();
         return view('sections.admin.monsters.form', [
             'monster' => null,
+            'sizes' => $sizes,
             'alignments' => $alignments,
             'challenges' => $challenges,
             'formAction' => route('monsters.store'),
@@ -97,11 +100,13 @@ class MonstersController extends Controller
      */
     public function edit($id)
     {
+        $sizes = Size::all();
         $monster = Monster::findOrFail($id);
         $alignments = Alignment::all();
         $challenges = Challenge::all();
         return view('sections.admin.monsters.form', [
             'monster' => $monster,
+            'sizes' => $sizes,
             'alignments' => $alignments,
             'challenges' => $challenges,
             'formAction' => route('monsters.update', ['id' => $id]),
