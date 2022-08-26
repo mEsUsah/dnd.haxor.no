@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Challenge;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Monster extends Model
 {
@@ -31,4 +32,9 @@ class Monster extends Model
         'traits',
         'alignment',
     ];
+
+    public function challenge()
+    {
+        return $this->belongsTo(Challenge::class);
+    }
 }
