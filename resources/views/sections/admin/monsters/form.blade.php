@@ -27,7 +27,9 @@
                         <div class="row mb-3">
                             <label for="name" class="col-sm-3 col-form-label">Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="name" name="name"
+                                <input type="text" 
+                                    class="form-control @error('name') is-invalid @enderror" 
+                                    id="name" name="name"
                                     value="{{ old('name', optional($monster ?? null)->name) }}">
                             </div>
                         </div>
@@ -35,14 +37,16 @@
                         <div class="row mb-3">
                             <label for="type" class="col-sm-3 col-form-label">Type</label>
                             <div class="col-sm-9">
-                                <select class="form-select" aria-label="Default select example" name="type">
-                                    <option selected>Select...</option>
-                                    @foreach (config('variables.cratureType') as $id => $type)
-                                    <option value="{{ $id }}" 
-                                        {{ old('type', optional($monster ?? null)->type) == $id ? 'selected' : '' }}>
-                                        {{ $type }}
-                                    </option>
-                                    @endforeach
+                                <select class="form-select @error('name') is-invalid @enderror" 
+                                    aria-label="Default select example" 
+                                    name="type">
+                                        <option selected>Select...</option>
+                                        @foreach (config('variables.cratureType') as $id => $type)
+                                            <option value="{{ $id }}" 
+                                                {{ old('type', optional($monster ?? null)->type) == $id ? 'selected' : '' }}>
+                                                {{ $type }}
+                                            </option>
+                                        @endforeach
                                 </select>
                             </div>
                         </div>
@@ -50,14 +54,16 @@
                         <div class="row mb-3">
                             <label for="alignment" class="col-sm-3 col-form-label">Alignment</label>
                             <div class="col-sm-9">
-                                <select class="form-select" aria-label="Default select example" name="alignment">
-                                    <option selected>Select...</option>
-                                    @foreach (config('variables.alignment') as $id => $alignment)
-                                    <option value="{{ $id }}" 
-                                        {{ old('alignment', optional($monster ?? null)->alignment) == $id ? 'selected' : '' }}>
-                                        {{ $alignment }}
-                                    </option>
-                                    @endforeach
+                                <select class="form-select @error('alignment') is-invalid @enderror" 
+                                    aria-label="Default select example" 
+                                    name="alignment">
+                                        <option selected>Select...</option>
+                                        @foreach (config('variables.alignment') as $id => $alignment)
+                                            <option value="{{ $id }}" 
+                                                {{ old('alignment', optional($monster ?? null)->alignment) == $id ? 'selected' : '' }}>
+                                                {{ $alignment }}
+                                            </option>
+                                        @endforeach
                                 </select>
                             </div>
                         </div>
@@ -65,14 +71,16 @@
                         <div class="row mb-3">
                             <label for="size_id" class="col-sm-3 col-form-label">Size</label>
                             <div class="col-sm-9">
-                                <select class="form-select" aria-label="Default select example" name="size_id">
-                                    <option selected>Select...</option>
-                                    @foreach (config('variables.cratureSize') as $id => $size)
-                                        <option value="{{ $id }}" 
-                                            {{ old('size_id', optional($monster ?? null)->size_id) == $id ? 'selected' : '' }}>
-                                            {{ $size }}
-                                        </option>
-                                    @endforeach
+                                <select class="form-select size_id @error('size_id') is-invalid @enderror" 
+                                    aria-label="Default select example" 
+                                    name="size_id">
+                                        <option selected>Select...</option>
+                                        @foreach (config('variables.cratureSize') as $id => $size)
+                                            <option value="{{ $id }}" 
+                                                {{ old('size_id', optional($monster ?? null)->size_id) == $id ? 'selected' : '' }}>
+                                                {{ $size }}
+                                            </option>
+                                        @endforeach
                                 </select>
                             </div>
                         </div>
@@ -82,15 +90,19 @@
                         <div class="row mb-3">
                             <label for="speed" class="col-sm-3 col-form-label">Speed</label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" id="speed" name="speed"
-                                value="{{ old('speed', optional($monster ?? null)->speed) }}">
+                                <input type="number" 
+                                    class="form-control @error('speed') is-invalid @enderror" 
+                                    id="speed" name="speed"
+                                    value="{{ old('speed', optional($monster ?? null)->speed) }}">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="ac" class="col-sm-3 col-form-label">AC</label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" id="ac" name="ac"
+                                <input type="number" 
+                                    class="form-control @error('ac') is-invalid @enderror" 
+                                    id="ac" name="ac"
                                     value="{{ old('ac', optional($monster ?? null)->ac) }}">
                             </div>
                         </div>
@@ -98,7 +110,9 @@
                         <div class="row mb-3">
                             <label for="armor" class="col-sm-3 col-form-label">Armor</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="armor" name="armor"
+                                <input type="text" 
+                                    class="form-control @error('armor') is-invalid @enderror" 
+                                    id="armor" name="armor"
                                     value="{{ old('armor', optional($monster ?? null)->armor) }}">
                             </div>
                         </div>
@@ -106,7 +120,9 @@
                         <div class="row mb-3">
                             <label for="hp" class="col-sm-3 col-form-label">HP</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="hp" name="hp" placeholder="Pattern: 1d8+2"
+                                <input type="text" 
+                                    class="form-control @error('hp') is-invalid @enderror" 
+                                    id="hp" name="hp" placeholder="Pattern: 1d8+2"
                                     value="{{ old('hp', optional($monster ?? null)->hp) }}">
                             </div>
                         </div>
@@ -116,42 +132,54 @@
                         <div class="row mb-3">
                             <label for="str" class="col-sm-3 col-form-label">Strength</label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" id="str" name="str" 
-                                value="{{ old('str', optional($monster ?? null)->str) }}">
+                                <input type="number" 
+                                    class="form-control @error('str') is-invalid @enderror" 
+                                    id="str" name="str" 
+                                    value="{{ old('str', optional($monster ?? null)->str) }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="dex" class="col-sm-3 col-form-label">Dexterity</label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" id="dex" name="dex" 
+                                <input type="number" 
+                                    class="form-control @error('dex') is-invalid @enderror" 
+                                    id="dex" name="dex" 
                                     value="{{ old('dex', optional($monster ?? null)->dex) }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="con" class="col-sm-3 col-form-label">Constitution</label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" id="con" name="con" 
+                                <input type="number" 
+                                    class="form-control @error('con') is-invalid @enderror" 
+                                    id="con" name="con" 
                                     value="{{ old('con', optional($monster ?? null)->con) }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="int" class="col-sm-3 col-form-label">Intelligence</label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" id="int" name="int" 
+                                <input type="number" 
+                                    class="form-control @error('int') is-invalid @enderror" 
+                                    id="int" name="int" 
                                     value="{{ old('int', optional($monster ?? null)->int) }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="wis" class="col-sm-3 col-form-label">Wizdom</label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" id="wis" name="wis" 
+                                <input type="number" 
+                                    class="form-control @error('wis') is-invalid @enderror" 
+                                    id="wis" name="wis" 
                                     value="{{ old('wis', optional($monster ?? null)->wis) }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="cha" class="col-sm-3 col-form-label">Charisma</label>
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" id="cha" name="cha" 
+                                <input type="number" 
+                                    class="form-control @error('cha') is-invalid @enderror" 
+                                    id="cha" name="cha" 
                                     value="{{ old('cha', optional($monster ?? null)->cha) }}">
                             </div>
                         </div>
@@ -161,7 +189,9 @@
                         <div class="row mb-3">
                             <label for="saves" class="col-sm-3 col-form-label">Saving Throws</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="saves" name="saves"
+                                <input type="text" 
+                                    class="form-control @error('saves') is-invalid @enderror" 
+                                    id="saves" name="saves"
                                     value="{{ old('saves', optional($monster ?? null)->saves) }}">
                             </div>
                         </div>
@@ -169,7 +199,9 @@
                         <div class="row mb-3">
                             <label for="skills" class="col-sm-3 col-form-label">Skills</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="skills" name="skills"
+                                <input type="text"
+                                    class="form-control @error('skills') is-invalid @enderror" 
+                                    id="skills" name="skills"
                                     value="{{ old('skills', optional($monster ?? null)->skills) }}">
                             </div>
                         </div>
@@ -177,7 +209,9 @@
                         <div class="row mb-3">
                             <label for="languages" class="col-sm-3 col-form-label">Language</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="languages" name="languages"
+                                <input type="text" 
+                                    class="form-control @error('languages') is-invalid @enderror" 
+                                    id="languages" name="languages"
                                     value="{{ old('languages', optional($monster ?? null)->languages) }}">
                             </div>
                         </div>
@@ -186,17 +220,20 @@
                         
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
-                            <textarea class="form-control" id="description" rows="3" name="description">{{ old('description', optional($monster ?? null)->description) }}</textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror" 
+                                id="description" rows="3" name="description">{{ old('description', optional($monster ?? null)->description) }}</textarea>
                         </div>
 
                         <div class="mb-3">
                             <label for="traits" class="form-label">Traits</label>
-                            <textarea class="form-control" id="traits" rows="3" name="traits">{{ old('traits', optional($monster ?? null)->traits) }}</textarea>
+                            <textarea class="form-control @error('traits') is-invalid @enderror" 
+                                id="traits" rows="3" name="traits">{{ old('traits', optional($monster ?? null)->traits) }}</textarea>
                         </div>
 
                         <div class="mb-3">
                             <label for="actions" class="form-label">Actions</label>
-                            <textarea class="form-control" id="actions" rows="3" name="actions">{{ old('actions', optional($monster ?? null)->actions) }}</textarea>
+                            <textarea class="form-control @error('actions') is-invalid @enderror" 
+                            id="actions" rows="3" name="actions">{{ old('actions', optional($monster ?? null)->actions) }}</textarea>
                         </div>
 
                         <hr>
@@ -204,14 +241,15 @@
                         <div class="row mb-3">
                             <label for="challenge" class="col-sm-3 col-form-label">Challenge</label>
                             <div class="col-sm-9">
-                                <select class="form-select" aria-label="Default select example" name="challenge">
-                                    <option selected>Select...</option>
-                                    @foreach (config('variables.challenge') as $id => $challenge)
-                                    <option value="{{ $id }}" 
-                                        {{ old('challenge', optional($monster ?? null)->challenge) == $id ? 'selected' : '' }}>
-                                        {{ $id }} - ({{ $challenge }} XP)
-                                    </option>
-                                    @endforeach
+                                <select class="form-select @error('challenge') is-invalid @enderror" 
+                                    aria-label="Default select example" name="challenge">
+                                        <option value="0" selected>Select...</option>
+                                        @foreach (config('variables.challenge') as $id => $challenge)
+                                            <option value="{{ $id }}" 
+                                                {{ old('challenge', optional($monster ?? null)->challenge) == $id ? 'selected' : '' }}>
+                                                {{ $id }} - ({{ $challenge }} XP)
+                                            </option>
+                                        @endforeach
                                 </select>
                             </div>
                         </div>
