@@ -237,17 +237,17 @@
                         </div>
 
                         <hr>
-
+                    
                         <div class="row mb-3">
                             <label for="challenge" class="col-sm-3 col-form-label">Challenge</label>
                             <div class="col-sm-9">
                                 <select class="form-select @error('challenge') is-invalid @enderror" 
                                     aria-label="Default select example" name="challenge">
                                         <option value="0" selected>Select...</option>
-                                        @foreach (config('variables.challenge') as $id => $challenge)
-                                            <option value="{{ $id }}" 
-                                                {{ old('challenge', optional($monster ?? null)->challenge) == $id ? 'selected' : '' }}>
-                                                {{ $id }} - ({{ $challenge }} XP)
+                                        @foreach ($challenges as $challenge)
+                                            <option value="{{ $challenge->id }}" 
+                                                {{ old('challenge', optional($monster ?? null)->challenge_id) == $challenge->id ? 'selected' : '' }}>
+                                                {{ $challenge->name }} - ({{ $challenge->xp }} XP)
                                             </option>
                                         @endforeach
                                 </select>

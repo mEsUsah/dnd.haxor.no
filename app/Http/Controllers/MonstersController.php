@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Challenge;
 use App\Models\Monster;
 use Illuminate\Http\Request;
 
@@ -27,8 +28,10 @@ class MonstersController extends Controller
      */
     public function create()
     {
+        $challenges = Challenge::all();
         return view('sections.admin.monsters.form', [
             'monster' => null,
+            'challenges' => $challenges,
             'formAction' => route('monsters.store'),
             'formMethod' => 'POST'
         ]);
@@ -92,8 +95,10 @@ class MonstersController extends Controller
     public function edit($id)
     {
         $monster = Monster::findOrFail($id);
+        $challenges = Challenge::all();
         return view('sections.admin.monsters.form', [
             'monster' => $monster,
+            'challenges' => $challenges,
             'formAction' => route('monsters.update', ['id' => $id]),
             'formMethod' => 'POST'
         ]);
