@@ -155,28 +155,7 @@ class MonstersController extends Controller
         ]);
 
         $monster = Monster::find($id);
-        $monster->name = $validated['name'];
-        $monster->type = $validated['type'];
-        $monster->alignment = $validated['alignment'];
-        $monster->size_id = $validated['size_id'];
-        $monster->speed = $validated['speed'];
-        $monster->ac = $validated['ac'];
-        $monster->armor = $validated['armor'];
-        $monster->hp = $validated['hp'];
-        $monster->str = $validated['str'];
-        $monster->dex = $validated['dex'];
-        $monster->con = $validated['con'];
-        $monster->int = $validated['int'];
-        $monster->wis = $validated['wis'];
-        $monster->cha = $validated['cha'];
-        $monster->skills = $validated['skills'];
-        $monster->saves = $validated['saves'];
-        $monster->languages = $validated['languages'];
-        $monster->description = $validated['description'];
-        $monster->traits = $validated['traits'];
-        $monster->actions = $validated['actions'];
-        $monster->challenge = $validated['challenge'];
-
+        $monster->fill($validated);
         $monster->save();
 
         return redirect(route('monsters.index'));
