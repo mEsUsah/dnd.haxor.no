@@ -54,7 +54,7 @@ class MonstersController extends Controller
         $validated = $request->validate([
             'name' => ['required','string'],
             'type' => ['required','integer'],
-            'alignment' => ['required','integer'],
+            'alignment_id' => ['required','integer'],
             'size_id' => ['required','integer'],
             'speed' => ['required','integer'],
             'ac' => ['required','integer'],
@@ -72,7 +72,7 @@ class MonstersController extends Controller
             'description' => ['nullable','string'],
             'traits' => ['nullable','string'],
             'actions' => ['required','string'],
-            'challenge' => ['required','string'],
+            'challenge_id' => ['required','string'],
         ]);
 
         $monster = Monster::create($validated);
@@ -126,7 +126,7 @@ class MonstersController extends Controller
         $validated = $request->validate([
             'name' => ['required','string'],
             'type' => ['required','integer'],
-            'alignment' => ['required','integer'],
+            'alignment_id' => ['required','integer'],
             'size_id' => ['required','integer'],
             'speed' => ['required','integer'],
             'ac' => ['required','integer'],
@@ -144,7 +144,7 @@ class MonstersController extends Controller
             'description' => ['nullable','string'],
             'traits' => ['nullable','string'],
             'actions' => ['required','string'],
-            'challenge' => ['required','string'],
+            'challenge_id' => ['required','string'],
         ]);
 
         $monster = Monster::findOrFail($id);

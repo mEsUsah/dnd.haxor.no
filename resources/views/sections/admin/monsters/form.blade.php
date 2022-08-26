@@ -56,7 +56,7 @@
                             <div class="col-sm-9">
                                 <select class="form-select @error('alignment') is-invalid @enderror" 
                                     aria-label="Default select example" 
-                                    name="alignment">
+                                    name="alignment_id">
                                         <option selected>Select...</option>
                                         @foreach ($alignments as $alignment)
                                             <option value="{{ $alignment->id }}" 
@@ -242,7 +242,7 @@
                             <label for="challenge" class="col-sm-3 col-form-label">Challenge</label>
                             <div class="col-sm-9">
                                 <select class="form-select @error('challenge') is-invalid @enderror" 
-                                    aria-label="Default select example" name="challenge">
+                                    aria-label="Default select example" name="challenge_id">
                                         <option value="0" selected>Select...</option>
                                         @foreach ($challenges as $challenge)
                                             <option value="{{ $challenge->id }}" 

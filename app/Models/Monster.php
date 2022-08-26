@@ -30,9 +30,9 @@ class Monster extends Model
         'languages',
         'description',
         'actions',
-        'challenge',
+        'challenge_id',
         'traits',
-        'alignment',
+        'alignment_id',
     ];
 
     public function challenge()
