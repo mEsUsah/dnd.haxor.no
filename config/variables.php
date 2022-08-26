@@ -49,17 +49,6 @@ return [
         '51' => '8 hours - Consentrate',
         '90' => 'Until despelled',
     ],
-    'alignment' => [
-        "1" => 'Chaotic Evil',
-        "2" => 'Natural Evil',
-        "3" => 'Lawfull Evil',
-        "4" => 'Chaotic Natural',
-        "5" => 'True Natural',
-        "6" => 'Lawfull Natural',
-        "7" => 'Chaotic Good',
-        "8" => 'Natural Good',
-        "9" => 'Lawfull Good',
-    ],
     'cratureType' => [
         "10" => 'Aberration',
         "20" => 'Beast',
