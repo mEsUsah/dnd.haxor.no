@@ -28,7 +28,7 @@
                             <label for="name" class="col-sm-3 col-form-label">Name</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="name" name="name"
-                                    value="{{ old('name', optional($monster)->name) }}">
+                                    value="{{ old('name', optional($monster ?? null)->name) }}">
                             </div>
                         </div>
 
@@ -39,7 +39,7 @@
                                     <option selected>Select...</option>
                                     @foreach (config('variables.cratureType') as $id => $type)
                                     <option value="{{ $id }}" 
-                                        {{ old('type', optional($monster)->type) == $id ? 'selected' : '' }}>
+                                        {{ old('type', optional($monster ?? null)->type) == $id ? 'selected' : '' }}>
                                         {{ $type }}
                                     </option>
                                     @endforeach
@@ -54,7 +54,7 @@
                                     <option selected>Select...</option>
                                     @foreach (config('variables.alignment') as $id => $alignment)
                                     <option value="{{ $id }}" 
-                                        {{ old('alignment', optional($monster)->alignment) == $id ? 'selected' : '' }}>
+                                        {{ old('alignment', optional($monster ?? null)->alignment) == $id ? 'selected' : '' }}>
                                         {{ $alignment }}
                                     </option>
                                     @endforeach
@@ -69,7 +69,7 @@
                                     <option selected>Select...</option>
                                     @foreach (config('variables.cratureSize') as $id => $size)
                                         <option value="{{ $id }}" 
-                                            {{ old('size_id', optional($monster)->size_id) == $id ? 'selected' : '' }}>
+                                            {{ old('size_id', optional($monster ?? null)->size_id) == $id ? 'selected' : '' }}>
                                             {{ $size }}
                                         </option>
                                     @endforeach
@@ -83,7 +83,7 @@
                             <label for="speed" class="col-sm-3 col-form-label">Speed</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" id="speed" name="speed"
-                                value="{{ old('speed', optional($monster)->speed) }}">
+                                value="{{ old('speed', optional($monster ?? null)->speed) }}">
                             </div>
                         </div>
 
@@ -91,7 +91,7 @@
                             <label for="ac" class="col-sm-3 col-form-label">AC</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" id="ac" name="ac"
-                                    value="{{ old('ac', optional($monster)->ac) }}">
+                                    value="{{ old('ac', optional($monster ?? null)->ac) }}">
                             </div>
                         </div>
 
@@ -99,7 +99,7 @@
                             <label for="armor" class="col-sm-3 col-form-label">Armor</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="armor" name="armor"
-                                    value="{{ old('armor', optional($monster)->armor) }}">
+                                    value="{{ old('armor', optional($monster ?? null)->armor) }}">
                             </div>
                         </div>
 
@@ -107,7 +107,7 @@
                             <label for="hp" class="col-sm-3 col-form-label">HP</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="hp" name="hp" placeholder="Pattern: 1d8+2"
-                                    value="{{ old('hp', optional($monster)->hp) }}">
+                                    value="{{ old('hp', optional($monster ?? null)->hp) }}">
                             </div>
                         </div>
 
@@ -117,42 +117,42 @@
                             <label for="str" class="col-sm-3 col-form-label">Strength</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" id="str" name="str" 
-                                value="{{ old('str', optional($monster)->str) }}">
+                                value="{{ old('str', optional($monster ?? null)->str) }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="dex" class="col-sm-3 col-form-label">Dexterity</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" id="dex" name="dex" 
-                                    value="{{ old('dex', optional($monster)->dex) }}">
+                                    value="{{ old('dex', optional($monster ?? null)->dex) }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="con" class="col-sm-3 col-form-label">Constitution</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" id="con" name="con" 
-                                    value="{{ old('con', optional($monster)->con) }}">
+                                    value="{{ old('con', optional($monster ?? null)->con) }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="int" class="col-sm-3 col-form-label">Intelligence</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" id="int" name="int" 
-                                    value="{{ old('int', optional($monster)->int) }}">
+                                    value="{{ old('int', optional($monster ?? null)->int) }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="wis" class="col-sm-3 col-form-label">Wizdom</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" id="wis" name="wis" 
-                                    value="{{ old('wis', optional($monster)->wis) }}">
+                                    value="{{ old('wis', optional($monster ?? null)->wis) }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="cha" class="col-sm-3 col-form-label">Charisma</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" id="cha" name="cha" 
-                                    value="{{ old('cha', optional($monster)->cha) }}">
+                                    value="{{ old('cha', optional($monster ?? null)->cha) }}">
                             </div>
                         </div>
 
@@ -162,7 +162,7 @@
                             <label for="saves" class="col-sm-3 col-form-label">Saving Throws</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="saves" name="saves"
-                                    value="{{ old('saves', optional($monster)->saves) }}">
+                                    value="{{ old('saves', optional($monster ?? null)->saves) }}">
                             </div>
                         </div>
 
@@ -170,7 +170,7 @@
                             <label for="skills" class="col-sm-3 col-form-label">Skills</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="skills" name="skills"
-                                    value="{{ old('skills', optional($monster)->skills) }}">
+                                    value="{{ old('skills', optional($monster ?? null)->skills) }}">
                             </div>
                         </div>
 
@@ -178,7 +178,7 @@
                             <label for="languages" class="col-sm-3 col-form-label">Language</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="languages" name="languages"
-                                    value="{{ old('languages', optional($monster)->languages) }}">
+                                    value="{{ old('languages', optional($monster ?? null)->languages) }}">
                             </div>
                         </div>
                         
@@ -186,17 +186,17 @@
                         
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
-                            <textarea class="form-control" id="description" rows="3" name="description">{{ old('description', optional($monster)->description) }}</textarea>
+                            <textarea class="form-control" id="description" rows="3" name="description">{{ old('description', optional($monster ?? null)->description) }}</textarea>
                         </div>
 
                         <div class="mb-3">
                             <label for="traits" class="form-label">Traits</label>
-                            <textarea class="form-control" id="traits" rows="3" name="traits">{{ old('traits', optional($monster)->traits) }}</textarea>
+                            <textarea class="form-control" id="traits" rows="3" name="traits">{{ old('traits', optional($monster ?? null)->traits) }}</textarea>
                         </div>
 
                         <div class="mb-3">
                             <label for="actions" class="form-label">Actions</label>
-                            <textarea class="form-control" id="actions" rows="3" name="actions">{{ old('actions', optional($monster)->actions) }}</textarea>
+                            <textarea class="form-control" id="actions" rows="3" name="actions">{{ old('actions', optional($monster ?? null)->actions) }}</textarea>
                         </div>
 
                         <hr>
@@ -208,7 +208,7 @@
                                     <option selected>Select...</option>
                                     @foreach (config('variables.challenge') as $id => $challenge)
                                     <option value="{{ $id }}" 
-                                        {{ old('challenge', optional($monster)->challenge) == $id ? 'selected' : '' }}>
+                                        {{ old('challenge', optional($monster ?? null)->challenge) == $id ? 'selected' : '' }}>
                                         {{ $id }} - ({{ $challenge }} XP)
                                     </option>
                                     @endforeach
