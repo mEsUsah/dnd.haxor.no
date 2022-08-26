@@ -27,7 +27,7 @@ class Monster extends Model
         'languages',
         'description',
         'actions',
-        'challange',
+        'challenge',
         'traits',
         'alignment',
     ];

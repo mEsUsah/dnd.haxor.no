@@ -58,7 +58,7 @@ class MonstersController extends Controller
             'wis' => ['required','integer'],
             'cha' => ['required','integer'],
             'saves' => ['nullable','string'],
-            'skills' => ['required','string'],
+            'skills' => ['nullable','string'],
             'languages' => ['nullable','string'],
             'description' => ['nullable','string'],
             'traits' => ['nullable','string'],
@@ -66,29 +66,7 @@ class MonstersController extends Controller
             'challenge' => ['required','string'],
         ]);
 
-        $monster = new Monster();
-        $monster->name = $validated['name'];
-        $monster->type = $validated['type'];
-        $monster->alignment = $validated['alignment'];
-        $monster->size_id = $validated['size_id'];
-        $monster->speed = $validated['speed'];
-        $monster->ac = $validated['ac'];
-        $monster->armor = $validated['armor'];
-        $monster->hp = $validated['hp'];
-        $monster->str = $validated['str'];
-        $monster->dex = $validated['dex'];
-        $monster->con = $validated['con'];
-        $monster->int = $validated['int'];
-        $monster->wis = $validated['wis'];
-        $monster->cha = $validated['cha'];
-        $monster->saves = $validated['saves'];
-        $monster->skills = $validated['skills'];
-        $monster->languages = $validated['languages'];
-        $monster->description = $validated['description'];
-        $monster->traits = $validated['traits'];
-        $monster->actions = $validated['actions'];
-        $monster->challenge = $validated['challenge'];
-
+        $monster = Monster::create($validated);
         $monster->save();
 
         return redirect(route('monsters.index'));
@@ -146,7 +124,7 @@ class MonstersController extends Controller
             'wis' => ['required','integer'],
             'cha' => ['required','integer'],
             'saves' => ['nullable','string'],
-            'skills' => ['required','string'],
+            'skills' => ['nullable','string'],
             'languages' => ['nullable','string'],
             'description' => ['nullable','string'],
             'traits' => ['nullable','string'],
