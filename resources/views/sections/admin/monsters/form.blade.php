@@ -58,10 +58,10 @@
                                     aria-label="Default select example" 
                                     name="alignment">
                                         <option selected>Select...</option>
-                                        @foreach (config('variables.alignment') as $id => $alignment)
-                                            <option value="{{ $id }}" 
-                                                {{ old('alignment', optional($monster ?? null)->alignment) == $id ? 'selected' : '' }}>
-                                                {{ $alignment }}
+                                        @foreach ($alignments as $alignment)
+                                            <option value="{{ $alignment->id }}" 
+                                                {{ old('alignment', optional($monster ?? null)->alignment_id) == $alignment->id ? 'selected' : '' }}>
+                                                {{ $alignment->name }}
                                             </option>
                                         @endforeach
                                 </select>
@@ -237,7 +237,7 @@
                         </div>
 
                         <hr>
-                    
+
                         <div class="row mb-3">
                             <label for="challenge" class="col-sm-3 col-form-label">Challenge</label>
                             <div class="col-sm-9">
