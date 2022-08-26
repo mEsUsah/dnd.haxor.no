@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Size;
 use App\Models\Alignment;
 use App\Models\Challenge;
 use Illuminate\Database\Eloquent\Model;
@@ -42,5 +43,10 @@ class Monster extends Model
     public function alignment()
     {
         return $this->belongsTo(Alignment::class);
+    }
+
+    public function size()
+    {
+        return $this->belongsTo(Size::class);
     }
 }
