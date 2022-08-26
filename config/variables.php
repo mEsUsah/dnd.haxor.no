@@ -49,16 +49,6 @@ return [
         '51' => '8 hours - Consentrate',
         '90' => 'Until despelled',
     ],
-    'challenge' => [
-        '1/8' => 25, 
-        '1/4' => 50, 
-        '1/2' => 100, 
-        '1' => 200, 
-        '2' => 450, 
-        '3' => 700, 
-        '4' => 1100, 
-        '8' => 3900, 
-    ],
     'alignment' => [
         "1" => 'Chaotic Evil',
         "2" => 'Natural Evil',
