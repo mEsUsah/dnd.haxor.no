@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div>
             <h1>Monsters</h1>
-            <a href="{{ route('monsters.create') }}" class="btn btn-sm btn-success">Add Monster</a>
+            @can('create', App\Models\Monster::class)
+                <a href="{{ route('monsters.create') }}" class="btn btn-sm btn-success">Add Monster</a>
+            @endcan
 
             @foreach ($monsters as $monster)
                 <div class="dnd-card dnd-card--clear">
