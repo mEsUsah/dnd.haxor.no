@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Size;
+use App\Models\Monster;
 use App\Models\Alignment;
 use App\Models\Challenge;
-use App\Models\Monster;
-use App\Models\Size;
 use Illuminate\Http\Request;
 
 class MonstersController extends Controller
@@ -30,6 +30,7 @@ class MonstersController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Monster::class);
         $sizes = Size::all();
         $alignments = Alignment::all();
         $challenges = Challenge::all();
@@ -51,6 +52,7 @@ class MonstersController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Monster::class);
         $validated = $request->validate([
             'name' => ['required','string'],
             'type' => ['required','integer'],
@@ -100,8 +102,10 @@ class MonstersController extends Controller
      */
     public function edit($id)
     {
-        $sizes = Size::all();
+        
         $monster = Monster::findOrFail($id);
+        $this->authorize('edit', $monster);
+        $sizes = Size::all();
         $alignments = Alignment::all();
         $challenges = Challenge::all();
         return view('sections.admin.monsters.form', [
@@ -110,7 +114,7 @@ class MonstersController extends Controller
             'alignments' => $alignments,
             'challenges' => $challenges,
             'formAction' => route('monsters.update', ['id' => $id]),
-            'formMethod' => 'POST'
+            'formMethod' => 'POST',
         ]);
     }
 
@@ -123,6 +127,8 @@ class MonstersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $monster = Monster::findOrFail($id);
+        $this->authorize('update', $monster);
         $validated = $request->validate([
             'name' => ['required','string'],
             'type' => ['required','integer'],
@@ -163,6 +169,7 @@ class MonstersController extends Controller
     public function destroy($id)
     {
         $monster = Monster::find($id);
+        $this->authorize('delete', Monster::class);
         $monster->delete();
         return redirect(route('monsters.index'));
     }
